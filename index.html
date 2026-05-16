@@ -186,18 +186,21 @@
     flex-shrink: 0;
     filter: drop-shadow(1px 1px 0 rgba(0,0,0,0.08));
   }
-  .city-info { text-align: left; flex: 1; }
+  .city-info { text-align: left; flex: 1; min-width: 0; }
   .city-name {
     font-family: 'Caveat', cursive;
     font-size: 20px;
     font-weight: 700;
     color: var(--ink);
     line-height: 1.2;
+    word-break: keep-all;
   }
   .city-sub {
     font-size: 13px;
     color: var(--brown);
     opacity: 0.7;
+    line-height: 1.35;
+    word-break: keep-all;
   }
 
   .badge {
@@ -210,6 +213,7 @@
     border-radius: 20px;
     flex-shrink: 0;
     box-shadow: 1px 2px 0 rgba(200,40,26,0.3);
+    white-space: nowrap;
   }
   .badge-soon {
     background: #f0ebe4;
@@ -287,6 +291,44 @@
     color: #ccc;
     animation: fadeUp 0.8s ease 0.6s both;
   }
+  @media (max-width: 420px) {
+    body { padding: 24px 14px; }
+    .profile-wrap {
+      padding: 18px 16px 14px;
+      margin-bottom: 18px;
+    }
+    .profile {
+      width: 124px;
+      height: 124px;
+      margin-bottom: 10px;
+    }
+    h1 { font-size: 26px; }
+    .tagline {
+      font-size: 14px;
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+    .sns-btn {
+      gap: 6px;
+      padding: 11px 12px;
+      font-size: 14px;
+    }
+    .city-card {
+      gap: 11px;
+      padding: 13px 14px;
+    }
+    .sticker { font-size: 28px; }
+    .city-name { font-size: 19px; }
+    .city-sub { font-size: 12px; }
+    .badge {
+      font-size: 10px;
+      padding: 3px 8px;
+    }
+    .arrow { font-size: 18px; }
+    .soon-box { padding: 13px 14px; }
+    .soon-title { font-size: 17px; }
+    .soon-list { font-size: 12px; }
+  }
 </style>
 </head>
 <body>
@@ -324,8 +366,18 @@
     <a href="https://daeronana.com/osaka" class="city-card active featured">
       <span class="sticker">🏯</span>
       <div class="city-info">
-        <div class="city-name">오사카 여행 모아보기</div>
-        <div class="city-sub">맛집 지도와 오사카 여행 준비 콘텐츠를 한곳에서 볼 수 있어요.</div>
+        <div class="city-name">오사카 여행</div>
+        <div class="city-sub">맛집 지도와 여행 준비 자료 모음</div>
+      </div>
+      <span class="badge">OPEN ✨</span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="https://daeronana.com/fukuoka" class="city-card active featured">
+      <span class="sticker">🍜</span>
+      <div class="city-info">
+        <div class="city-name">후쿠오카 여행</div>
+        <div class="city-sub">맛집 지도와 여행 준비 자료 모음</div>
       </div>
       <span class="badge">OPEN ✨</span>
       <span class="arrow">›</span>
@@ -334,8 +386,8 @@
     <a href="https://daeronana.com/okinawa" class="city-card active featured">
       <span class="sticker">🌺</span>
       <div class="city-info">
-        <div class="city-name">오키나와 맛집 지도</div>
-        <div class="city-sub">오키나와 여행자를 위한 맛집 모음</div>
+        <div class="city-name">오키나와 맛집</div>
+        <div class="city-sub">여행자를 위한 맛집 지도</div>
       </div>
       <span class="badge">OPEN ✨</span>
       <span class="arrow">›</span>
@@ -344,8 +396,8 @@
     <a href="https://daeronana.com/japan-festival-2026" class="city-card active festival">
       <span class="sticker">🎆</span>
       <div class="city-info">
-        <div class="city-name">2026 일본 축제 캘린더</div>
-        <div class="city-sub">마츠리·하나비를 한눈에 보는 여행 일정표</div>
+        <div class="city-name">일본 축제 캘린더</div>
+        <div class="city-sub">마츠리·하나비 여행 일정표</div>
       </div>
       <span class="badge">NEW ✨</span>
       <span class="arrow">›</span>
@@ -353,7 +405,7 @@
 
     <div class="soon-box">
       <div class="soon-title">다음 업데이트 예정</div>
-      <div class="soon-list">후쿠오카 · 도쿄 · 삿포로 · 오비히로 · 나트랑 · 타이베이 · 홍콩</div>
+      <div class="soon-list">도쿄 · 삿포로 · 오비히로 · 나트랑 · 타이베이 · 홍콩</div>
     </div>
   </div>
 
