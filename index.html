@@ -291,6 +291,29 @@
     color: #ccc;
     animation: fadeUp 0.8s ease 0.6s both;
   }
+  .footer-notice {
+    max-width: 340px;
+    margin: 0 auto 10px;
+    font-size: 12px;
+    line-height: 1.45;
+    color: rgba(139,94,60,0.64);
+    word-break: keep-all;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .footer-links a {
+    color: rgba(139,94,60,0.72);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+  }
+  .footer-links a:hover { color: var(--red); }
+  .copyright { color: #ccc; }
   @media (max-width: 420px) {
     body { padding: 24px 14px; }
     .profile-wrap {
@@ -412,7 +435,13 @@
 
 
   <div class="footer">
-    Copyright 2026 daero._.nana. All Rights Reserved.
+    <div class="footer-notice">여행 정보는 현지 사정에 따라 변경될 수 있으니 방문 전 공식 사이트를 확인해 주세요.</div>
+    <nav class="footer-links" aria-label="기본 정보">
+      <a href="/about/">소개</a>
+      <a href="/contact/">문의</a>
+      <a href="/privacy/">개인정보처리방침</a>
+    </nav>
+    <div class="copyright">Copyright 2026 daero._.nana. All Rights Reserved.</div>
   </div>
 </div>
 
