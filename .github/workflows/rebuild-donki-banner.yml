@@ -1,0 +1,32 @@
+name: Rebuild Donki coupon banner
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/donki-banner-trigger.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild JPG from base64 chunks
+        run: |
+          mkdir -p assets
+          cat .github/donki-banner-parts/part*.b64 | base64 -d > assets/donki-coupon-banner.jpg
+          file assets/donki-coupon-banner.jpg
+          ls -l assets/donki-coupon-banner.jpg
+      - name: Commit rebuilt banner
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/donki-coupon-banner.jpg
+          if ! git diff --cached --quiet; then
+            git commit -m "Rebuild Donki coupon banner JPG"
+            git push
+          fi
