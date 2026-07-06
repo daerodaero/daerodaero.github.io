@@ -27,6 +27,8 @@
     }
 
     html {
+      max-width: 100%;
+      overflow-x: hidden;
       scroll-behavior: smooth;
     }
 
@@ -38,6 +40,8 @@
       letter-spacing: 0;
       word-break: keep-all;
       overflow-wrap: break-word;
+      max-width: 100%;
+      overflow-x: hidden;
     }
 
     a {
@@ -64,6 +68,7 @@
     .site-shell {
       width: 100%;
       min-height: 100vh;
+      overflow-x: clip;
       background:
         linear-gradient(180deg, rgba(245, 239, 230, 0.95) 0%, rgba(255, 250, 243, 0.92) 46%, #fffdf8 100%);
     }
@@ -187,6 +192,14 @@
       padding: 54px 0 34px;
     }
 
+    .hero > *,
+    .section-head > *,
+    .button-row,
+    .hero-visual {
+      min-width: 0;
+      max-width: 100%;
+    }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -228,6 +241,7 @@
       font-size: clamp(24px, 2.8vw, 36px);
       font-weight: 900;
       line-height: 1.05;
+      overflow-wrap: anywhere;
     }
 
     .hero-copy {
@@ -258,7 +272,9 @@
       justify-content: center;
       gap: 8px;
       padding: 12px 17px;
-      white-space: nowrap;
+      max-width: 100%;
+      text-align: center;
+      white-space: normal;
     }
 
     .button.primary {
@@ -343,7 +359,7 @@
 
     .intro-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
 
@@ -381,6 +397,8 @@
     .info-card,
     .content-card,
     .contact-panel {
+      min-width: 0;
+      max-width: 100%;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: rgba(255, 255, 255, 0.68);
@@ -432,6 +450,8 @@
     .funnel-card,
     .case-card,
     .offer-card {
+      min-width: 0;
+      max-width: 100%;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: rgba(255, 255, 255, 0.68);
@@ -474,6 +494,8 @@
     .audience-detail-card,
     .reaction-card,
     .performance-card {
+      min-width: 0;
+      max-width: 100%;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: rgba(255, 255, 255, 0.68);
@@ -1026,18 +1048,18 @@
     }
 
     body.preview-mobile h1 {
-      font-size: 40px;
+      font-size: 34px;
       line-height: 1.05;
     }
 
     body.preview-mobile .name-en {
       margin-top: 8px;
-      font-size: 24px;
+      font-size: 20px;
     }
 
     body.preview-mobile .hero-copy {
       margin-bottom: 22px;
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.45;
     }
 
@@ -1056,6 +1078,17 @@
       min-height: 0;
       height: 100%;
       object-position: center;
+    }
+
+    body.preview-mobile .button-row {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    body.preview-mobile .button-row .button {
+      width: 100%;
+      min-width: 0;
     }
 
     body.preview-mobile section {
@@ -1130,7 +1163,9 @@
     body.preview-mobile .reaction-grid,
     body.preview-mobile .performance-grid,
     body.preview-mobile .contact-panel {
-      grid-template-columns: 1fr;
+      width: 100%;
+      max-width: 100%;
+      grid-template-columns: minmax(0, 1fr);
     }
 
     body.preview-mobile .content-card {
@@ -1170,7 +1205,9 @@
       .reaction-grid,
       .performance-grid,
       .contact-panel {
-        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .hero {
@@ -1240,12 +1277,12 @@
       }
 
       h1 {
-        font-size: 36px;
+        font-size: 32px;
         line-height: 1.06;
       }
 
       .name-en {
-        font-size: 23px;
+        font-size: 19px;
       }
 
       h2 {
@@ -1282,6 +1319,8 @@
       .audience-detail-card,
       .reaction-card,
       .performance-card {
+        width: 100%;
+        max-width: 100%;
         padding: 18px;
         min-height: auto;
       }
@@ -1310,6 +1349,7 @@
 
       .button-row .button {
         width: 100%;
+        min-width: 0;
       }
 
       .segmented {
@@ -1369,11 +1409,11 @@
       }
 
       h1 {
-        font-size: 32px;
+        font-size: 29px;
       }
 
       .name-en {
-        font-size: 21px;
+        font-size: 17px;
       }
 
       h2 {
@@ -1513,7 +1553,7 @@
         </div>
         <div class="stats-grid" aria-label="チャンネル実績">
           <div class="stat-card">
-            <strong>88,000+</strong>
+            <strong>98,000+</strong>
             <span>Instagramフォロワー</span>
           </div>
           <div class="stat-card">
@@ -1554,7 +1594,7 @@
         </div>
         <div class="insight-grid">
           <article class="insight-card">
-            <strong>88,000+</strong>
+            <strong>98,000+</strong>
             <span>Instagramフォロワー</span>
           </article>
           <article class="insight-card">
@@ -1866,7 +1906,7 @@
 
     <footer>
       <span>Travel Creator Portfolio · daero._.nana</span>
-      <span>Portfolio ver.6</span>
+      <span>Portfolio ver.7</span>
       <span>Contact · dleogh888@naver.com</span>
       <span>Copyright 2026 daero._.nana. All Rights Reserved.</span>
     </footer>
