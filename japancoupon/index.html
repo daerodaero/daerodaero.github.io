@@ -230,7 +230,7 @@
         <a href="https://daeronana.com/privacy/">개인정보처리방침</a>
       </div>
       일부 링크는 제휴 링크이며, 예약 또는 쿠폰 사용 시 일정액의 수수료를 제공받을 수 있습니다.<br>
-      대로와 나나 일본 쿠폰북 ver.32<br>
+      대로와 나나 일본 쿠폰북 ver.33<br>
       Copyright 2026 daero._.nana. All Rights Reserved.
     </div>
   </footer>
@@ -713,6 +713,31 @@
     "feature": "나리타공항 출국장에서 바로 이용할 수 있는 면세점으로, 술·담배 쇼핑에 활용하기 좋아요."
   }
 ]
+</script>
+<script>
+  // Show a lightweight card list before the large embedded coupon images are parsed.
+  (() => {
+    const raw = document.getElementById('couponData');
+    const list = document.getElementById('couponList');
+    const tabs = document.getElementById('tabs');
+    if (!raw || !list || !tabs) return;
+    try {
+      const coupons = JSON.parse(raw.textContent);
+      const escape = (value = '') => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+      const category = value => (value === '백화점' || value === '면세점') ? '백화점·면세점' : value;
+      const date = value => value ? value.replaceAll('-', '.') : '상시 또는 확인 필요';
+      const categories = ['전체', '디스카운트 스토어', '가전', '드럭스토어', '편의점', '백화점·면세점', '쇼핑몰', '음식'];
+      tabs.innerHTML = categories.map(name => `<button class="tab ${name === '전체' ? 'active' : ''}" type="button" data-cat="${name}">${name} ${name === '전체' ? coupons.length : ''}</button>`).join('');
+      list.innerHTML = coupons.map((coupon, index) => `
+        <button class="coupon ${coupon.is_commission ? 'recommend' : ''}" type="button" data-index="${index}">
+          <div class="coupon-main"><div class="coupon-info"><div class="coupon-top">
+            <span class="brand-logo" style="background:${escape(coupon.brand_color || '#fff')}"><span class="fallback show">${escape(coupon.logo_text || coupon.name)}</span></span>
+            <div class="coupon-copy"><h2>${escape(coupon.name)}</h2><span class="category-pill">${escape(category(coupon.category))}</span><p class="expires">유효기간 ${date(coupon.expires)}</p></div>
+          </div></div></div>
+          <div class="coupon-discount"><span>${escape(coupon.discount_label)}</span></div>
+        </button>`).join('');
+    } catch (_) {}
+  })();
 </script>
 <script>
   const COUPONS = JSON.parse(document.getElementById('couponData').textContent);
